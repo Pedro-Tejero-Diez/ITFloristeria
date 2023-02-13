@@ -2,16 +2,21 @@ package ejercicioNivel2;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.sql.Connection;
 
 public class ITFloristeria {
-
+	
 	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-
-		// fetch student record based on his roll no from the database
-		// Student model = retriveStudentFromDatabase();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (Exception ex) {
+			// handle the error
+		}
 
 		Floristeria floristeria = new Floristeria();
 		VistaFloristeria vista = new VistaFloristeria();

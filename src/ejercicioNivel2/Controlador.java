@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Controlador {
@@ -46,25 +47,13 @@ public class Controlador {
 		return name;
 	}
 
-	public Floristeria crearFloristeria() {
+	public Floristeria crearFloristeria() throws SQLException {
 		String name = extraerFloristeria();
 		setNombreFloristeria(name);
-		try {
-			Path path = Paths.get(
-					"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-							+ name + "\\tickets");
-
-			Files.createDirectories(path);
-
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-
-		vista.mostrarFloristeria(floristeria);
-
+		Repository rp = new Repository();
+		rp.nuevaFloristeria(name);
 		return floristeria;
 	}
-
 	public void añadirArbol() throws FileNotFoundException, IOException {
 		String name = extraerFloristeria();
 		System.out.println("Introduzca Número Arboles: ");
