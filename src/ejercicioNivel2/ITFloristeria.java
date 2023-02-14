@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.sql.Connection;
 
 public class ITFloristeria {
 	
@@ -15,23 +14,13 @@ public class ITFloristeria {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception ex) {
-			// handle the error
+			System.out.println(ex.getMessage());
 		}
 
 		Floristeria floristeria = new Floristeria();
 		VistaFloristeria vista = new VistaFloristeria();
 		Controlador controller = new Controlador(floristeria, vista);
 
-		/*
-		 * Create a view : to write student details on console StudentView view = new
-		 * StudentView();
-		 * 
-		 * StudentController controller = new StudentController(model, view);
-		 * 
-		 * controller.updateView();
-		 */
-
-		// Creamos el menú con llamadas a los métodos que ejecutarán las acciones:
 		boolean sortir = false;
 		do {
 			switch (menu()) {

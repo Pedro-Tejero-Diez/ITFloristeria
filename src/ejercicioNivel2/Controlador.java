@@ -54,67 +54,48 @@ public class Controlador {
 		rp.nuevaFloristeria(name);
 		return floristeria;
 	}
-	public void añadirArbol() throws FileNotFoundException, IOException {
+	public void añadirArbol() throws  SQLException {
 		String name = extraerFloristeria();
 		System.out.println("Introduzca Número Arboles: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-
-		try (FileWriter fw = new FileWriter(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\arbol.txt",
-				true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
-			for (int i = 0; i <= numero; i++) {
-				out.write('A');
-			}
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		System.out.println("Introduzca Altura Arboles: ");
+		float altura = sc.nextFloat();
+		sc.nextLine();
+		System.out.println("Introduzca Precio Arbol: ");
+		float precio = sc.nextFloat();
+		sc.nextLine();
+		Repository.nuevoStockArbol(name, numero, altura, precio);
+	
 
 	}
 
-	public void añadirFlor() throws FileNotFoundException, IOException {
+	public void añadirFlor() throws  SQLException {
 		String name = extraerFloristeria();
-		System.out.println("Introduzca Número Flores: ");
+		System.out.println("Introduzca Color Flores: ");
+		String color = sc.nextLine();
+		System.out.println("Introduzca Precio Flores: ");
+		float precio = sc.nextFloat();
+		sc.nextLine();
+		System.out.println("Introduzca Cantidad Flores: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		try (FileWriter fw = new FileWriter(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\flor.txt",
-				true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
-			for (int i = 0; i <= numero; i++) {
-				out.write("F");
-			}
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+		Repository.nuevoStockFlor(name, numero, color, precio);
+		
 
-	public void añadirDecoracion() throws FileNotFoundException, IOException {
+		}
+
+	public void añadirDecoracion() throws SQLException {
 		String name = extraerFloristeria();
-		System.out.println("Introduzca tipo decoracion (madera/plastico) :");
+		System.out.println("Introduzca Tipo Decoracion (plastico/madera): ");
 		String tipo = sc.nextLine();
+		System.out.println("Introduzca Precio Decoracion: ");
+		float precio = sc.nextFloat();
+		sc.nextLine();
 		System.out.println("Introduzca Cantidad: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		try (FileWriter fw = new FileWriter(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\decoracion.txt",
-				true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
-			if (tipo.equalsIgnoreCase("madera")) {
-				for (int i = 0; i <= numero; i++) {
-					out.write("M");
-				}
-			}
-			if (tipo.equalsIgnoreCase("plastico")) {
-					for (int i = 0; i <= numero; i++) {
-						out.write("P");
-					}
-				}
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		Repository.nuevoStockFlor(name, numero, tipo, precio);
 	}
 
 	public String StockArboles(String name) throws FileNotFoundException, IOException {
