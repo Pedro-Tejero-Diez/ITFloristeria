@@ -98,55 +98,10 @@ public class Controlador {
 		Repository.nuevoStockFlor(name, numero, tipo, precio);
 	}
 
-	public String StockArboles(String name) throws FileNotFoundException, IOException {
 
-		String arboles = "";
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\arbol.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			arboles = br.readLine();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		return arboles;
-	}
-
-	public String StockFlores(String name) throws FileNotFoundException, IOException {
-
-		String flores = "";
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\flor.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			flores = br.readLine();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		return flores;
-	}
-
-	public String StockDecoraciones(String name) throws FileNotFoundException, IOException {
-
-		String decoraciones = "";
-
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\decoracion.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			decoraciones = br.readLine();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		return decoraciones;
-	}
-
-	public void mostrarStockFloristeria() throws FileNotFoundException, IOException {
+	public void mostrarStockFloristeria() throws SQLException {
 		String name = extraerFloristeria();
-		vista.mostrarStock(StockArboles(name), StockFlores(name), StockDecoraciones(name));
+		vista.mostrarStock(name);
 	}
 
 	public void mostrarCantidadesStockFloristeria() throws FileNotFoundException, IOException {
@@ -252,7 +207,7 @@ public class Controlador {
 
 	public void mostrarValorTotalFloristeria() throws FileNotFoundException, IOException {
 		String name = extraerFloristeria();
-		vista.mostrarValorTotal(StockArboles(name), StockFlores(name), StockDecoraciones(name));
+		//vista.mostrarValorTotal();
 	}
 
 	public void crearTicketCompra() {

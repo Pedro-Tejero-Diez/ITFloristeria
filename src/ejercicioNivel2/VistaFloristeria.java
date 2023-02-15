@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -22,12 +24,36 @@ public class VistaFloristeria {
 
 	}
 
-	public void mostrarStock(String a, String b, String c) throws FileNotFoundException, IOException {
-		System.out.println("Arboles = " + a);
-		System.out.println("Flores = " + b);
-		System.out.println("Decoraciones = " + c);
+	public void mostrarStock(String name) throws SQLException {
 
-	}
+		ResultSet almacenArbol = Repository.bringStockArbol(name);
+		System.out.println("STOCK ARBOLES: ");
+		 while (almacenArbol.next()) { 
+			  float alt = almacenArbol.getFloat("altura"); 
+			  float prc = almacenArbol.getFloat("precio"); 
+			  System.out.println("altura" + "             " + "precio");
+			  System.out.println(alt + "                 " + prc);
+}
+		
+		 ResultSet aF = Repository.bringStockFlor(name);
+		 System.out.println("STOCK FLORES: ");
+		 while (aF.next()) { 
+			  String color = aF.getString("color"); 
+			  float prc = aF.getFloat("precio"); 
+			  System.out.println("color" + "             " + "precio");
+			  System.out.println(color + "                 " + prc);
+		  }
+
+		 ResultSet almacenDecor = Repository.bringStockDecor(name);
+		 System.out.println("STOCK DECORACIONES: ");
+			while (almacenDecor.next()) {
+				String tipo = almacenDecor.getString("tipo");
+				float prc = almacenDecor.getFloat("precio");
+				System.out.println("tipo" + "             " + "precio");
+				System.out.println(tipo + "                 " + prc);
+			}
+		}
+
 
 	public void mostrarCantidadesStock(String a, String b, String c) throws FileNotFoundException, IOException {
 		System.out.println("Numero Arboles = " + a.length());
