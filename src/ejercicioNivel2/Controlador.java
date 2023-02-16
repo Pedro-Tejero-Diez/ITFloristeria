@@ -104,105 +104,44 @@ public class Controlador {
 		vista.mostrarStock(name);
 	}
 
-	public void mostrarCantidadesStockFloristeria() throws FileNotFoundException, IOException {
+	public void mostrarCantidadesStockFloristeria() throws SQLException {
 		String name = extraerFloristeria();
 		vista.mostrarCantidadesStock(name);
 	}
 
-	public void retirarArbol() throws FileNotFoundException, IOException {
+	public void retirarArbol() throws SQLException {
 		String name = extraerFloristeria();
 		System.out.println("Introduzca Número Arboles a retirar: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		restarArbol(name, numero);
+		System.out.println("Introduzca Altura de Arboles a retirar: ");
+		float altura = sc.nextFloat();
+		Repository.restarArbol(name, numero, altura);
 
 	}
 
-	public void restarArbol(String name, int numero) {
-		String buffer = "";
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\arbol.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-			buffer = br.readLine();
-			if (buffer.length() < numero)
-				System.out.println("numero mayor que stock");
-			String result = buffer.substring(0, (buffer.length() - numero));
-			try (FileWriter fw = new FileWriter(
-					"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-							+ name + "\\arbol.txt");
-					BufferedWriter bw = new BufferedWriter(fw);
-					PrintWriter out = new PrintWriter(bw)) {
-				out.println(result);
-			}
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
 
-	}
-
-	public void retirarFlor() throws FileNotFoundException, IOException {
+	public void retirarFlor() throws SQLException {
 		String name = extraerFloristeria();
 		System.out.println("Introduzca Número Flores a retirar: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		restarFlor(name, numero);
+		System.out.println("Introduzca Color Flores a retirar: ");
+		String color = sc.nextLine();
+		Repository.restarFlor(name, numero, color);
 
 	}
 
-	public void restarFlor(String name, int numero) {
 
-		String buffer = "";
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\flor.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-			buffer = br.readLine();
-			if (buffer.length() < numero)
-				System.out.println("numero mayor que stock");
-			String result = buffer.substring(0, (buffer.length() - numero));
-			try (FileWriter fw = new FileWriter(
-					"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-							+ name + "\\flor.txt");
-					BufferedWriter bw = new BufferedWriter(fw);
-					PrintWriter out = new PrintWriter(bw)) {
-				out.println(result);
-			}
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public void retirarDecoracion() throws FileNotFoundException, IOException {
+	public void retirarDecoracion() throws  SQLException {
 		String name = extraerFloristeria();
 		System.out.println("Introduzca Número decoraciones a retirar: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		restarDecoracion(name, numero);
+		System.out.println("Introduzca Tipo Decoracion a retirar: ");
+		String tipo = sc.nextLine();
+		Repository.restarDecoracion(name, numero, tipo);
 
-	}
-
-	public void restarDecoracion(String name, int numero) {
-
-		String buffer = "";
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\decoracion.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-			buffer = br.readLine();
-			if (buffer.length() < numero)
-				System.out.println("numero mayor que stock");
-			String result = buffer.substring(0, (buffer.length() - numero));
-			try (FileWriter fw = new FileWriter(
-					"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-							+ name + "\\decoracion.txt");
-					BufferedWriter bw = new BufferedWriter(fw);
-					PrintWriter out = new PrintWriter(bw)) {
-				out.println(result);
-			}
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
 	}
 
 	public void mostrarValorTotalFloristeria() throws FileNotFoundException, IOException {
@@ -215,15 +154,15 @@ public class Controlador {
 		System.out.println("Cuántos Arboles compra?:");
 		int arboles = sc.nextInt();
 		sc.nextLine();
-		restarArbol(name, arboles);
+		//restarArbol(name, arboles);
 		System.out.println("Cuántas flores compra?:");
 		int flores = sc.nextInt();
 		sc.nextLine();
-		restarFlor(name, flores);
+		//restarFlor(name, flores);
 		System.out.println("Cuántas decoraciones compra?:");
 		int decoraciones = sc.nextInt();
 		sc.nextLine();
-		restarDecoracion(name, decoraciones);
+		//restarDecoracion(name, decoraciones);
 		vista.imprimirTicketCompra(name, arboles, flores, decoraciones);
 	}
 	

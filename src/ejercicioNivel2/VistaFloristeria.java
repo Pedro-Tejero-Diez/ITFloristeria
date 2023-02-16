@@ -55,13 +55,6 @@ public class VistaFloristeria {
 		}
 
 
-	public void mostrarCantidadesStock(String a, String b, String c) throws FileNotFoundException, IOException {
-		System.out.println("Numero Arboles = " + a.length());
-		System.out.println("Numero Flores = " + b.length());
-		System.out.println("Numero Decoraciones = " + c.length());
-
-	}
-
 	public void mostrarValorTotal(String a, String b, String c) throws FileNotFoundException, IOException {
 		double valorArboles = (double) a.length() * arbol.getPrecio();
 		double valorFlores = (double) b.length() * flor.getPrecio();
@@ -73,38 +66,18 @@ public class VistaFloristeria {
 		System.out.println("Valor Total Floristeria: " + (valorArboles + valorFlores + valorDecoracion));
 	}
 
-	public void mostrarCantidadesStock(String name) throws FileNotFoundException, IOException {
-		String arboles, flores, decoraciones;
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\arbol.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			while ((arboles = br.readLine()) != null)
-				System.out.println("Número árboles: " + arboles.length());
-		} catch (IOException e) {
-
+	public void mostrarCantidadesStock(String name) throws SQLException {
+	ResultSet rm = Repository.mostrarCantidades(name);
+	while(rm.next()) {
+		if (rm.getType().equals(double)) {
+			
 		}
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\flor.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			while ((flores = br.readLine()) != null)
-				System.out.println("Número flores: " + flores.length());
-		} catch (IOException e) {
-
-		}
-		try (FileReader fr = new FileReader(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\decoracion.txt");
-				BufferedReader br = new BufferedReader(fr)) {
-
-			while ((decoraciones = br.readLine()) != null)
-				System.out.println("Numero Decoraciones: " + decoraciones.length());
-		} catch (IOException e) {
-
-		}
+		
+		float alt = rm.getFloat("altura");
+		int qtt = rm.getInt("cantidad");
+		System.out.println(qtt);
+		
+	}
 	}
 
 	public void imprimirTicketCompra(String name, int arboles, int flores, int decoraciones) {
