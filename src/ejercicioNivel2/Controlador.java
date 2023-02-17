@@ -144,26 +144,33 @@ public class Controlador {
 
 	}
 
-	public void mostrarValorTotalFloristeria() throws FileNotFoundException, IOException {
+	public void mostrarValorTotalFloristeria() throws SQLException {
 		String name = extraerFloristeria();
-		//vista.mostrarValorTotal();
+		vista.mostrarValorTotal(name);
 	}
 
-	public void crearTicketCompra() {
+	public void crearTicketCompra() throws SQLException {
+		
 		String name = extraerFloristeria();
+		System.out.println("Id de arbol a comprar: ");
+		int altura = sc.nextInt();
+		sc.nextLine();
 		System.out.println("Cuántos Arboles compra?:");
-		int arboles = sc.nextInt();
+		int cantarbol = sc.nextInt();
 		sc.nextLine();
-		//restarArbol(name, arboles);
+		System.out.println("Color flores a comprar: ");
+		String flor = sc.nextLine();
 		System.out.println("Cuántas flores compra?:");
-		int flores = sc.nextInt();
+		int cantflor = sc.nextInt();
 		sc.nextLine();
-		//restarFlor(name, flores);
+		
+		System.out.println("Tipo Decoración a comprar: ");
+		String dec = sc.nextLine();
 		System.out.println("Cuántas decoraciones compra?:");
-		int decoraciones = sc.nextInt();
+		int cantdecor = sc.nextInt();
 		sc.nextLine();
-		//restarDecoracion(name, decoraciones);
-		vista.imprimirTicketCompra(name, arboles, flores, decoraciones);
+		
+		Repository.crearTicketCompra(name, altura, cantarbol, flor, cantflor, dec, cantdecor);
 	}
 	
 	public void listadoComprasAnteriores() {
