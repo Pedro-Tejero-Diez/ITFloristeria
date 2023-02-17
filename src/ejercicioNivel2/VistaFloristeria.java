@@ -55,52 +55,56 @@ public class VistaFloristeria {
 		}
 
 
-	public void mostrarValorTotal(String a, String b, String c) throws FileNotFoundException, IOException {
-		double valorArboles = (double) a.length() * arbol.getPrecio();
-		double valorFlores = (double) b.length() * flor.getPrecio();
-		double valorDecoracion = (double) c.length() * arbol.getPrecio();
+	public void mostrarValorTotal(String name) throws SQLException {
 
-		System.out.println("Valor Arboles = " + valorArboles);
-		System.out.println("Valor Flores = " + valorFlores);
-		System.out.println("Valor Decoraciones = " + valorDecoracion);
-		System.out.println("Valor Total Floristeria: " + (valorArboles + valorFlores + valorDecoracion));
+	float total=0;
+	ResultSet rA = Repository.mostrarCantidadArbol(name);
+	while (rA.next()) {
+		float qtpr= rA.getInt(1)*rA.getFloat(3);
+		
+		total += qtpr;
+	}
+	ResultSet rF = Repository.mostrarCantidadFlor(name);
+	while (rF.next()) {
+		float qtpr= rF.getInt(1)*rF.getFloat(3);
+		
+		total += qtpr;
+	}
+	ResultSet rD = Repository.mostrarCantidadDecor(name);
+	while (rD.next()) {
+		float qtpr= rD.getInt(1)*rD.getFloat(3);
+		
+		total += qtpr;
+	}
+	System.out.println("El total del stock en euros es: "+total);
 	}
 
 	public void mostrarCantidadesStock(String name) throws SQLException {
-	ResultSet rm = Repository.mostrarCantidades(name);
-	while(rm.next()) {
-		if (rm.getType().equals(double)) {
-			
-		}
-		
-		float alt = rm.getFloat("altura");
-		int qtt = rm.getInt("cantidad");
-		System.out.println(qtt);
-		
+	ResultSet rA = Repository.mostrarCantidadArbol(name);
+	int qt =0;
+	while (rA.next()) {
+		float alt = rA.getFloat(2);
+		qt = rA.getInt(1);
+		System.out.println("Altura árbol: "+alt+"        Cantidad: "+qt);
+	}
+	ResultSet rF = Repository.mostrarCantidadFlor(name);
+	while (rF.next()) {
+		String color = rF.getString(2);
+		qt = rF.getInt(1);
+		System.out.println("Color flor: "+color+"        Cantidad: "+qt);
+	}
+	ResultSet rD = Repository.mostrarCantidadDecor(name);
+	while (rD.next()) {
+		String tipo = rD.getString(2);
+		qt = rD.getInt(1);
+		System.out.println("Tipo Decoración: "+tipo+"        Cantidad: "+qt);
 	}
 	}
+	
 
-	public void imprimirTicketCompra(String name, int arboles, int flores, int decoraciones) {
-		double totalArboles = (double) arboles * arbol.getPrecio();
-		double totalFlores = (double) flores * flor.getPrecio();
-		double totalDecoraciones = (double) decoraciones * decoracion.getPrecio();
-		double totalTicket = totalArboles + totalFlores + totalDecoraciones;
-		sumatorioVentas(name, totalTicket);
-		String fecha = new SimpleDateFormat("yyyy-MM-dd__HH-mm").format(new Date());
-		try (FileWriter fw = new FileWriter(
-				"C:\\Users\\pedro\\eclipse-workspace\\S03T03N01PedroTejeroDiez\\lib\\src\\main\\java\\Floristeria "
-						+ name + "\\tickets\\ticket " + fecha + ".txt");
-				BufferedWriter bw = new BufferedWriter(fw);
-				PrintWriter out = new PrintWriter(bw)) {
-			out.println("FLORISTERIA:   " + name + "\n");
-			out.println("Fecha y hora de la compra:   " + fecha + "\n");
-			out.println("Arboles comprados: " + arboles + "         Precio: " + totalArboles + "\n");
-			out.println("Flores compradas: " + flores + "           Precio: " + totalFlores + "\n");
-			out.println("Decoraciones compradas: " + decoraciones + "     Precio: " + totalDecoraciones);
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-
+	public void imprimirTicketCompra(String name, float altura, int arboles, String color, int flores, String tipo, int decoraciones) {
+	
+		
 	}
 
 	public void sumatorioVentas(String name, double total) {
