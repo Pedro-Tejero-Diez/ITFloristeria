@@ -160,4 +160,17 @@ public class VistaFloristeria {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void imprimirTicketCompra(Date fecha, String name) {
+		
+		ResultTest rm = Repository.imprimirTicket(fecha, name);
+		while (rm.next()) {
+			if (rm.getDate(2).equals(fecha)) {
+				sysou(ticket fecha+ fecha);
+				rm.getInt(arbol)
+				sysou()
+			}
+		}
+		
+	}
 }

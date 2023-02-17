@@ -271,8 +271,14 @@ public class Repository {
 		restarArbol(name, arbol, arboles);
 		restarFlor(name, flores, color);
 		restarDecoracion(name, decoraciones, tipo);
-
+		vista.imprimirTicketCompra(fecha, name);
 		
 	}
->>>>>>> 7ce4ce5a7eb42a4db5b16b0eea3f73dc33032e02
+public ResultTest imprimirTicket(Date fecha, String name) {
+	Connection con = nuevaConexion();
+	Statement st = con.createStatement();
+	st.execute("USE " + name);
+	ResultSet ticket = st.executeQuery("SELECT * FROM ticket;");
+	return ticket;
+	
 }
