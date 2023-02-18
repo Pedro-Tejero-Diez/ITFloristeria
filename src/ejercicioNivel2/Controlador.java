@@ -1,15 +1,5 @@
 package ejercicioNivel2;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -50,8 +40,7 @@ public class Controlador {
 	public Floristeria crearFloristeria() throws SQLException {
 		String name = extraerFloristeria();
 		setNombreFloristeria(name);
-		Repository rp = new Repository();
-		rp.nuevaFloristeria(name);
+		Repository.nuevaFloristeria(name);
 		return floristeria;
 	}
 	public void añadirArbol() throws  SQLException {
@@ -95,7 +84,7 @@ public class Controlador {
 		System.out.println("Introduzca Cantidad: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		Repository.nuevoStockFlor(name, numero, tipo, precio);
+		Repository.nuevoStockDecor(name, numero, tipo, precio);
 	}
 
 
@@ -126,9 +115,10 @@ public class Controlador {
 		System.out.println("Introduzca Número Flores a retirar: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		System.out.println("Introduzca Color Flores a retirar: ");
-		String color = sc.nextLine();
-		Repository.restarFlor(name, numero, color);
+		System.out.println("Introduzca Id Flores a retirar: ");
+		int id = sc.nextInt();
+		sc.nextLine();
+		Repository.restarFlor(name, numero, id);
 
 	}
 
@@ -138,8 +128,9 @@ public class Controlador {
 		System.out.println("Introduzca Número decoraciones a retirar: ");
 		int numero = sc.nextInt();
 		sc.nextLine();
-		System.out.println("Introduzca Tipo Decoracion a retirar: ");
-		String tipo = sc.nextLine();
+		System.out.println("Introduzca Id Decoracion a retirar: ");
+		int tipo = sc.nextInt();
+		sc.nextLine();
 		Repository.restarDecoracion(name, numero, tipo);
 
 	}
@@ -153,37 +144,36 @@ public class Controlador {
 		
 		String name = extraerFloristeria();
 		System.out.println("Id de arbol a comprar: ");
-		int altura = sc.nextInt();
+		int arbol = sc.nextInt();
 		sc.nextLine();
 		System.out.println("Cuántos Arboles compra?:");
 		int cantarbol = sc.nextInt();
 		sc.nextLine();
-		System.out.println("Color flores a comprar: ");
-		String flor = sc.nextLine();
+		System.out.println("Id flores a comprar: ");
+		int flor = sc.nextInt();
+		sc.nextLine();
 		System.out.println("Cuántas flores compra?:");
 		int cantflor = sc.nextInt();
 		sc.nextLine();
 		
-		System.out.println("Tipo Decoración a comprar: ");
-		String dec = sc.nextLine();
+		System.out.println("Id Decoración a comprar: ");
+		int dec = sc.nextInt();
+		sc.nextLine();
 		System.out.println("Cuántas decoraciones compra?:");
 		int cantdecor = sc.nextInt();
 		sc.nextLine();
 		
-		Repository.crearTicketCompra(name, altura, cantarbol, flor, cantflor, dec, cantdecor);
+		Repository.crearTicketCompra(name, arbol, cantarbol, flor, cantflor, dec, cantdecor);
 	}
 	
-	public void listadoComprasAnteriores() {
+	public void listadoComprasAnteriores() throws SQLException {
 		String name = extraerFloristeria();
-		vista.listadoCompras(name);
+		vista.listadoComprasAnteriores(name);
 	}
 	
-	public void gananciasTotalesFloristeria() {
+	public void gananciasTotalesFloristeria() throws SQLException {
 		String name = extraerFloristeria();
-		vista.gananciasTotales(name);
+		vista.vistaGananciasTotales(name);
 	}
 
-	public void updateView() {
-		vista.mostrarFloristeria(floristeria);
-	}
 }

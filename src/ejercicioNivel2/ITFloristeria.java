@@ -25,7 +25,7 @@ public class ITFloristeria {
 		do {
 			switch (menu()) {
 			case 1:
-				floristeria = controller.crearFloristeria();
+				controller.crearFloristeria();
 				break;
 			case 2:
 				controller.añadirArbol();
