@@ -37,7 +37,7 @@ public class ITFloristeria {
 				controller.añadirDecoracion();
 				break;
 			case 5:
-				controller.mostrarStockFloristeria();
+				controller.mostrarCantidadesStockFloristeria();
 				break;
 			case 6:
 				controller.retirarArbol();

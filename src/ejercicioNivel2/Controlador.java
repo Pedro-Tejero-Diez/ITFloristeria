@@ -88,11 +88,6 @@ public class Controlador {
 	}
 
 
-	public void mostrarStockFloristeria() throws SQLException {
-		String name = extraerFloristeria();
-		vista.mostrarStock(name);
-	}
-
 	public void mostrarCantidadesStockFloristeria() throws SQLException {
 		String name = extraerFloristeria();
 		vista.mostrarCantidadesStock(name);
