@@ -1,4 +1,4 @@
-package ejercicioMySQL;
+package ejercicioNivel2;
 
 public class Arbol {
 
