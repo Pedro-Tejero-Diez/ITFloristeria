@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "3e22cad1-b40e-4b38-9730-73232ee4b781",
+		"name": "Projecte Gradle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26237959"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Servidor",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "Puerto",
+			"value": "9001",
+			"type": "string"
+		}
+	]
+}

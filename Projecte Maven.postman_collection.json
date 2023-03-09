@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "5662cc34-22aa-43b3-9610-e5da7b1d22e3",
+		"name": "Projecte Maven",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26237959"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Servidor}}:{{Puerto}}/HelloWorld",
+					"host": [
+						"{{Servidor}}"
+					],
+					"port": "{{Puerto}}",
+					"path": [
+						"HelloWorld"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Servidor",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "Puerto",
+			"value": "9000",
+			"type": "string"
+		}
+	]
+}
