@@ -1,0 +1,17 @@
+package cat.itacademy.barcelonactiva.S04T01N02GPedroTejero;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+public class S04T01N02GPedroTejero {
+	
+		@SpringBootApplication
+		public class S04T01N01PedroTejeroApplication {
+
+			public static void main(String[] args) {
+				SpringApplication.run(S04T01N01PedroTejeroApplication.class, args);
+				
+			}
+	}
+
+}

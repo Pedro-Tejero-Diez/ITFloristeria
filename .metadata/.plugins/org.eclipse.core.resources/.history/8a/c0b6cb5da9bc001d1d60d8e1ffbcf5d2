@@ -1,0 +1,5 @@
+package cat.itacademy.barcelonactiva.S04T01N02GPedroTejero.controllers;
+
+public class HelloWorldController {
+
+}

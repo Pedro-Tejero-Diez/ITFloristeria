@@ -1,0 +1,40 @@
+package m7ejercicio7;
+
+import java.util.Scanner;
+
+public class M7Ejercicio7 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int numero;
+		String caracter;
+		
+		//entrada de datos
+		
+		System.out.println("Introduczca un numero (lado del cuadrado)");
+		numero = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Introduczca el caracter");
+		caracter = sc.nextLine();
+		
+		//con los datos trabajara el metodo:
+		
+		printSquare(numero, caracter);
+	
+	}
+	/* este do while fue la solución que yo encontré pero es
+	 * mejor usar dos bucles for (uno dentro de otro) porque con el 
+	 * do while te arriesgas a que haya un bucle infinito si no lo haces bien
+	 */
+	public static void printSquare(int x, String e){
+		int i=0,j;
+		do {
+	for (j=1; j <=x; j++) {
+		System.out.print(e);
+		}
+	i++;
+	System.out.println("\n");
+	} while (i<=x);
+	}
+}

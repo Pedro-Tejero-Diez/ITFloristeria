@@ -1,0 +1,10 @@
+package ejercicio1;
+
+public class vendaBuidaException extends Exception {
+
+	
+	
+} catch (vendaBuidaException e) {
+	System.out.println(e.getMessage());
+}
+}

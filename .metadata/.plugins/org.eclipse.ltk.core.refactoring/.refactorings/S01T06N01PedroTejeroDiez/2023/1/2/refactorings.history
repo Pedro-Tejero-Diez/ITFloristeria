@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;GenericMethods.java&apos; to &apos;S01T06N02PedroTejeroDiez/src/ejercicio1&apos;&#x0D;&#x0A;- Original project: &apos;S01T06N01PedroTejeroDiez&apos;&#x0D;&#x0A;- Destination element: &apos;S01T06N02PedroTejeroDiez/src/ejercicio1&apos;&#x0D;&#x0A;- Original element: &apos;ejercicio2.GenericMethods.java&apos;" description="Copy compilation unit" destination="=S01T06N02PedroTejeroDiez/src&lt;ejercicio1" element1="/src&lt;ejercicio2{GenericMethods.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1673771792251" units="1" version="1.0"/>
+</session>

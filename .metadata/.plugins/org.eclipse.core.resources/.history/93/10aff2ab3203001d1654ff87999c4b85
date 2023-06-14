@@ -1,0 +1,24 @@
+package pooclase1;
+
+public class Coche {
+	
+	private String marca;
+	private String modelo;
+	private int potencia;
+	private int cilindrada;
+	private String color;
+	
+	public void arrancar() {
+		System.out.println("Estoy Arrancando");
+	}
+	public void frenar() {
+		System.out.println("Estoy Frenando");
+	}
+	public void acelerar() {
+		System.out.println("Estoy acelerando");
+	}
+	public void girar() {
+		System.out.println("Estoy Girando");
+	}
+	
+}

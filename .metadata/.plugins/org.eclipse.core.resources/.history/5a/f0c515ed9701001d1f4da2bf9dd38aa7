@@ -1,0 +1,34 @@
+package m7_2ejercicio8;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+public class M7_2Ejercicio8 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int numero;
+		
+		System.out.println("Introduzca un numero");
+		numero = sc.nextInt();
+		esFibonacci(numero);//llamada al método
+	}
+	public static void esFibonacci(int numero) {
+		
+		//arraylist donde se guardan las posiciones de la serie
+		ArrayList<Integer> serie = new ArrayList<Integer>(); 
+		int suma=2;
+		serie.add(0);
+		serie.add(1);//0 y 1 han de estar siempre en la serie
+		
+		//en este bucle se suman la ultima posición del array y la anterior para generar la serie
+		for (int i=1; i<numero;i++) {
+			suma = serie.get(i)+serie.get(i-1);
+			serie.add(suma);
+		}
+		System.out.print(serie);
+	}
+
+}

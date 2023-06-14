@@ -1,0 +1,42 @@
+package ejercicio1;
+
+public class Venta {
+
+	private Producto[] listado;
+	
+	public Venta(Producto[] listado) {
+
+		this.listado = listado;
+
+	}
+
+	public Producto[] getListado() {
+		return listado;
+	}
+
+	public void setListado(Producto[] listado) {
+		this.listado = listado;
+	}
+
+
+	public int calcularTotal() {
+		int sumaTotal=0;
+		try {
+			
+			for (int i=0; i<listado.length; i++) {
+				sumaTotal += listado[i].getPrecio();
+				
+			} 
+		}
+			catch (IndexOutOfBoundsException e) {
+			System.out.println(e.getMessage());
+			}
+		catch (vendaBuidaException e) {
+			System.out.println(e.getMessage());
+		}
+			
+		return sumaTotal;
+		}
+	}
+
+

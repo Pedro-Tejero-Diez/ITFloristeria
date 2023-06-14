@@ -1,0 +1,18 @@
+package bancopruebascodewars;
+
+
+public class BancoPruebasCodeWars {
+
+	public static void main(String[] Args){
+		
+		System.out.println(Acum.encrypt(null, 0));
+		
+		System.out.println(Acum.decrypt(null, 0));
+		
+		System.out.println(Otraspruebas.encrypt("This is a test!", 2));
+		
+	}
+			
+	}
+
+
